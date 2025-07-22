@@ -1,0 +1,7 @@
+25043 25031 kshitiz          /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python orchestrator.py
+25116 25103 kshitiz          claude      
+25121 25116 kshitiz          npm exec @playwright/mcp   
+25122 25116 kshitiz          npm exec @modelcontextprotocol/server-filesystem /Users/kshitiz/CascadeProjects/claude_multiagent/ai_dev_pair    
+25186 25122 kshitiz          node /Users/kshitiz/.npm/_npx/a3241bba59c344f5/node_modules/.bin/mcp-server-filesystem /Users/kshitiz/CascadeProjects/claude_multiagent/ai_dev_pair
+25217 25121 kshitiz          node /Users/kshitiz/.npm/_npx/86170c4cd1c5da32/node_modules/.bin/mcp-server-playwright
+25278 25267 kshitiz          watch -n 2 cat comm.json | jq .
