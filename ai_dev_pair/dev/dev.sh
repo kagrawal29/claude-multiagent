@@ -8,7 +8,7 @@ echo ""
 echo "Features:"
 echo "✓ Interactive Claude with MCP (Playwright + Filesystem)"
 echo "✓ No permission prompts (--dangerously-skip-permissions)"
-echo "✓ Auto-checks ../comm.json every 20 seconds"
+echo "✓ Auto-checks ../comm.json every 2 minutes"
 echo "✓ Fully autonomous operation"
 echo ""
 
@@ -57,7 +57,7 @@ echo "[$(date +%H:%M:%S)] Sent initial check"
 
 # Auto-check loop
 while true; do
-    sleep 20
+    sleep 120
     
     osascript << EOF
 tell application "Terminal"

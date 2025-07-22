@@ -1,10 +1,47 @@
 #!/bin/bash
-# Multi-Agent System Startup Script
+# Multi-Agent System Startup Script V2
 # This script opens all necessary terminals for the AI pair programming system
 
 cd $(dirname "$0")
 
+# Store PIDs for cleanup
+PID_FILE=".system_pids"
+> "$PID_FILE"
+
 echo "🚀 Starting Claude Multi-Agent Development System..."
+echo ""
+echo "This system provides a complete AI pair programming environment with:"
+echo ""
+echo "📊 SYSTEM OVERVIEW:"
+echo "┌─────────────────────────────────────────────────────────────────┐"
+echo "│  1. SYSTEM-MONITOR (orchestrator.py)                           │"
+echo "│     • Real-time health monitoring of all agents                │"
+echo "│     • Shows agent status, message flow, and system health      │"
+echo "│     • Auto-restarts failed agents                              │"
+echo "├─────────────────────────────────────────────────────────────────┤"
+echo "│  2. DEV-AGENT (MCP-enabled Claude)                             │"
+echo "│     • Your primary developer with file system access           │"
+echo "│     • Follows TEST-FIRST approach                              │"
+echo "│     • Auto-checks for new tasks every 2 minutes               │"
+echo "├─────────────────────────────────────────────────────────────────┤"
+echo "│  3. GUIDE-AGENT (Autonomous Mentor)                            │"
+echo "│     • Senior engineer providing guidance and review            │"
+echo "│     • Enforces quality standards and best practices            │"
+echo "│     • Can reprogram DEV agent behavior                         │"
+echo "├─────────────────────────────────────────────────────────────────┤"
+echo "│  4. COMM-MONITOR (Live Message Feed)                           │"
+echo "│     • Shows all messages between agents in real-time           │"
+echo "│     • JSON formatted for easy reading                          │"
+echo "│     • Use to track conversation flow                           │"
+echo "└─────────────────────────────────────────────────────────────────┘"
+echo ""
+echo "🎮 HOW TO USE:"
+echo "• Send tasks via: python3 send_message.py dev \"Your task\""
+echo "• Monitor progress: Watch the COMM-MONITOR window"
+echo "• Check health: Look at SYSTEM-MONITOR for agent status"
+echo "• Stop system: Run ./stop_system.sh"
+echo ""
+echo "Starting components..."
 echo ""
 
 # Function to check if a process is already running
@@ -27,18 +64,45 @@ tell application "Terminal"
 end tell
 EOF
     sleep 2
+    # Get PID
+    echo "orchestrator:$(pgrep -f 'python3 orchestrator.py' | tail -1)" >> "$PID_FILE"
 fi
 
-# 2. Start DEV Agent with MCP
-if ! check_running "dev/dev.sh" "DEV Agent"; then
+# 2. Start DEV Agent with MCP (Modified to be fully autonomous)
+if ! check_running "mcp-server-filesystem" "DEV Agent"; then
     echo "🛠️  Starting DEV Agent (MCP-enabled)..."
+    # Create a modified dev.sh that doesn't require user input
+    cat > dev/dev_auto.sh << 'DEVSCRIPT'
+#!/bin/bash
+cd $(dirname "$0")
+
+# Start Claude with MCP in background
+claude --mcp-config mcp_config.json --dangerously-skip-permissions --append-system-prompt "$(cat claude.md)" &
+CLAUDE_PID=$!
+
+# Wait for Claude to initialize
+sleep 5
+
+# Auto-check loop
+while true; do
+    # Send check command to Claude's stdin
+    echo "Check ../comm.json for new messages and respond if needed"
+    sleep 120
+done | tee /dev/tty | cat > /dev/null
+DEVSCRIPT
+    
+    chmod +x dev/dev_auto.sh
+    
     osascript << EOF
 tell application "Terminal"
-    set devWindow to do script "cd '$(pwd)/dev' && ./dev.sh"
+    set devWindow to do script "cd '$(pwd)/dev' && ./dev_auto.sh"
     set custom title of window 1 to "DEV-AGENT"
 end tell
 EOF
-    sleep 2
+    sleep 3
+    # Get PID
+    echo "dev:$(pgrep -f 'claude.*mcp-config' | tail -1)" >> "$PID_FILE"
+    echo "mcp:$(pgrep -f 'mcp-server-filesystem' | tail -1)" >> "$PID_FILE"
 fi
 
 # 3. Start GUIDE Agent in Autonomous Mode
@@ -51,24 +115,28 @@ tell application "Terminal"
 end tell
 EOF
     sleep 2
+    # Get PID
+    echo "guide:$(pgrep -f 'python3 agent.py' | tail -1)" >> "$PID_FILE"
 fi
 
 # 4. Open Comm.json Watcher
 echo "👀 Starting Communication Monitor..."
 osascript << EOF
 tell application "Terminal"
-    set watchWindow to do script "cd '$(pwd)' && watch -n 1 'tail -20 comm.json | jq .'"
+    set watchWindow to do script "cd '$(pwd)' && watch -n 1 'tail -30 comm.json | jq . || echo \"Waiting for messages...\"'"
     set custom title of window 1 to "COMM-MONITOR"
 end tell
 EOF
+# Get PID
+sleep 1
+echo "watch:$(pgrep -f 'watch.*comm.json' | tail -1)" >> "$PID_FILE"
 
 echo ""
 echo "✅ All systems started!"
 echo ""
-echo "Windows opened:"
-echo "  - SYSTEM-MONITOR: Real-time message tracking"
-echo "  - DEV-AGENT: MCP-enabled developer"
-echo "  - GUIDE-AGENT: Autonomous mentor"
-echo "  - COMM-MONITOR: Live communication feed"
+echo "💡 Quick Start:"
+echo "   python3 send_message.py dev \"Create a simple todo app with React\""
 echo ""
-echo "🎉 The Multi-Agent System is ready!"
+echo "📖 For more info, check README.md"
+echo ""
+echo "🛑 To stop all processes: ./stop_system.sh"
