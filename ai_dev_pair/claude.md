@@ -15,6 +15,23 @@ When you first start, IMMEDIATELY:
 ./start_system.sh
 ```
 
+## 🔄 SYSTEM RESTART PROTOCOL
+
+When restarting the system, ALWAYS follow this sequence:
+1. **Stop system**: `./stop_system.sh`
+2. **Wait and verify**: Check that all processes actually stopped
+   ```bash
+   sleep 3
+   ps aux | grep -E "orchestrator|mcp-server|claude.*mcp-config" | grep -v grep
+   ```
+3. **Kill stragglers**: If processes remain, force kill them:
+   ```bash
+   pids=$(pgrep -f "orchestrator.py|mcp-server|claude.*mcp-config")
+   [ "$pids" ] && kill -9 $pids 2>/dev/null
+   ```
+4. **Final verification**: Ensure clean state before restart
+5. **Start system**: `./start_system.sh` only after confirming clean state
+
 ## CRITICAL: User Experience Philosophy
 
 **The user is NOT technical!** They should NEVER need to:

@@ -21,12 +21,12 @@ echo "│     • Auto-restarts failed agents                              │"
 echo "├─────────────────────────────────────────────────────────────────┤"
 echo "│  2. DEV-AGENT (MCP-enabled Claude)                             │"
 echo "│     • Your primary developer with file system access           │"
-echo "│     • Follows TEST-FIRST approach                              │"
+echo "│     • Follows TEST-FIRST approach with Playwright E2E testing  │"
 echo "│     • Auto-checks for new tasks every 2 minutes               │"
 echo "├─────────────────────────────────────────────────────────────────┤"
 echo "│  3. GUIDE-AGENT (Autonomous Mentor)                            │"
 echo "│     • Senior engineer providing guidance and review            │"
-echo "│     • Enforces quality standards and best practices            │"
+echo "│     • Enforces quality standards and E2E testing requirements  │"
 echo "│     • Can reprogram DEV agent behavior                         │"
 echo "├─────────────────────────────────────────────────────────────────┤"
 echo "│  4. COMM-MONITOR (Live Message Feed)                           │"
@@ -71,31 +71,10 @@ fi
 # 2. Start DEV Agent with MCP (Modified to be fully autonomous)
 if ! check_running "mcp-server-filesystem" "DEV Agent"; then
     echo "🛠️  Starting DEV Agent (MCP-enabled)..."
-    # Create a modified dev.sh that doesn't require user input
-    cat > dev/dev_auto.sh << 'DEVSCRIPT'
-#!/bin/bash
-cd $(dirname "$0")
-
-# Start Claude with MCP in background
-claude --mcp-config mcp_config.json --dangerously-skip-permissions --append-system-prompt "$(cat claude.md)" &
-CLAUDE_PID=$!
-
-# Wait for Claude to initialize
-sleep 5
-
-# Auto-check loop
-while true; do
-    # Send check command to Claude's stdin
-    echo "Check ../comm.json for new messages and respond if needed"
-    sleep 120
-done | tee /dev/tty | cat > /dev/null
-DEVSCRIPT
-    
-    chmod +x dev/dev_auto.sh
     
     osascript << EOF
 tell application "Terminal"
-    set devWindow to do script "cd '$(pwd)/dev' && ./dev_auto.sh"
+    set devWindow to do script "cd '$(pwd)/dev' && ./dev.sh"
     set custom title of window 1 to "DEV-AGENT"
 end tell
 EOF

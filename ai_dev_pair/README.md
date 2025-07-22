@@ -95,11 +95,32 @@ Almost anything! Here are some examples:
 
 ## 🛡️ Your AI Team's Work Process
 
-1. **Planning** - They discuss the best approach
-2. **Building** - They write the actual code
-3. **Testing** - They make sure everything works
-4. **Review** - They check each other's work
-5. **Delivery** - They report back to you
+1. **Planning** - They break down your request into tasks (stored in tasks.md in your project)
+2. **Collaboration** - GUIDE reviews and provides insights on the approach
+3. **Building** - DEV writes the actual code with live feedback from GUIDE
+4. **Testing** - They make sure everything works (including real browser testing!)
+5. **Documentation** - They track progress in tasks.md and log changes in changelog.md
+6. **Review** - GUIDE actively reviews all code changes and provides suggestions
+7. **Version Control** - Regular commits to feature branches with proper documentation
+8. **Delivery** - They report back to you with evidence and working features
+
+## 🎭 Advanced Testing Capabilities
+
+Your AI team has **Playwright integration** for comprehensive testing:
+
+### What This Means for You:
+- **Real browser testing** - Your apps are tested in actual Chrome, Firefox, and Safari
+- **Complete user flows** - They test the entire user experience, not just individual parts
+- **Mobile testing** - Everything is verified to work on phones and tablets
+- **Visual testing** - They can catch when something "looks wrong"
+- **Performance monitoring** - They ensure your apps load quickly
+
+### You Don't Need to Do Anything!
+Your AI team handles all testing and project management automatically. When they say something is "ready," it's been:
+- Thoroughly tested in real browsers with real user interactions
+- Properly documented in your project's tasks.md and changelog.md files  
+- Committed to version control with clear commit messages
+- Reviewed by the GUIDE for quality and best practices
 
 ## ❓ Frequently Asked Questions
 
