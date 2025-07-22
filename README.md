@@ -47,16 +47,21 @@ cd ai_dev_pair
 claude --append-system-prompt "$(cat claude.md)"
 ```
 
-2. **In the Claude session, ask the ORCHESTRATOR to**:
-   - Start the agents
-   - Send tasks to DEV
-   - Check system status
+2. **The ORCHESTRATOR will automatically**:
+   - Launch all system components (System Monitor, DEV, GUIDE)
+   - Open monitoring terminals
+   - Verify system health
+   - Report readiness status
+
+3. **Then you can**:
+   - Send tasks to agents
    - Monitor progress
+   - Get status updates
 
 Example:
 ```
-You: "Please start the DEV and GUIDE agents and create a TODO app"
-ORCHESTRATOR: "I'll start both agents and send the task to DEV..."
+You: "Create a TODO app with React"
+ORCHESTRATOR: "The system is ready! I'll send this task to DEV with TEST-FIRST approach..."
 ```
 
 ### Option 2: Manual Operation
