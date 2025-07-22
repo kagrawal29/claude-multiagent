@@ -25,7 +25,7 @@ A powerful AI pair programming system featuring two specialized Claude agents (D
 
 1. Clone this repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/kagrawal29/claude-multiagent.git
 cd claude_multiagent
 ```
 
@@ -39,7 +39,15 @@ mkdir project && cd project
 
 ## 🎯 Quick Start
 
-### Option 1: Using the ORCHESTRATOR Assistant (Recommended)
+### One-Command Startup (Recommended)
+
+```bash
+./start.sh
+```
+
+That's it! This will launch the ORCHESTRATOR which automatically starts the entire multi-agent system.
+
+### Option 1: Using the ORCHESTRATOR Assistant (Manual)
 
 1. **Start your Claude session with the ORCHESTRATOR**:
 ```bash
