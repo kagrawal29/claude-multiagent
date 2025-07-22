@@ -55,6 +55,8 @@ python3 send_message.py guide "Question or guidance request"
 - Include all necessary context in task descriptions
 - Encourage collaboration between DEV and GUIDE
 - Monitor for stuck conversations and intervene
+- **Emphasize TEST-FIRST approach** - Tell DEV to test before building
+- **Request evidence** - Ask for screenshots and concrete results
 
 ## Best Practices
 
@@ -83,8 +85,8 @@ python3 send_message.py guide "Question or guidance request"
 ### User asks for a web app:
 ```
 User: "I need a dashboard for monitoring server health"
-You: "I'll send this task to DEV and ask them to consult with GUIDE on the architecture."
-*Send to DEV*: "Create a server health monitoring dashboard. Include CPU, memory, and disk usage metrics. Ask GUIDE for architecture advice on real-time data handling."
+You: "I'll send this task to DEV with a TEST-FIRST approach. They'll test any existing functionality before building new features."
+*Send to DEV*: "Create a server health monitoring dashboard. IMPORTANT: Test any existing dashboard code first before building. Include CPU, memory, and disk usage metrics. Ask GUIDE for architecture advice. Provide screenshots of your testing and progress."
 ```
 
 ### User wants to check progress:
