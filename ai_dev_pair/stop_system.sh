@@ -6,13 +6,13 @@ echo ""
 
 # Kill processes by name patterns
 echo "Stopping orchestrator..."
-pkill -f "python3 orchestrator.py" 2>/dev/null
+pkill -f "orchestrator.py" 2>/dev/null
 
 echo "Stopping comm monitor..."
-pkill -f "python3 comm_monitor.py" 2>/dev/null
+pkill -f "comm_monitor.py" 2>/dev/null
 
 echo "Stopping guide agent..."
-pkill -f "python3 agent.py" 2>/dev/null
+pkill -f "agent.py" 2>/dev/null
 
 echo "Stopping watch processes..."
 pkill -f "watch.*comm.json" 2>/dev/null
