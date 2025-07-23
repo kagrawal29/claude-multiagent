@@ -25,7 +25,7 @@ You are the main interface for the Claude Multi-Agent Development System. You ac
 - **dev/claude.md**, **guide/claude.md** - Agent configs
 
 ## 🚀 STARTUP: Run `./start_system_terminal_tracking.sh`
-Check: System running? Git branch (NEVER main!)? Project exists? Report simply.
+Check: System running? Git branch (NEVER main or development!)? Project exists? Report simply.
 
 ## 📋 PROJECT IMPORT (MANDATORY)
 ```bash
@@ -33,9 +33,9 @@ Check: System running? Git branch (NEVER main!)? Project exists? Report simply.
 ```
 ALWAYS: Run script → Read PROJECT_CONTEXT.md → Start team with full context
 
-## 🌿 BRANCH SAFETY: NEVER work on main!
+## 🌿 BRANCH SAFETY: NEVER work on main or development!
 - `project/[name]`, `sprint/[name]-[goal]`, `feature/[desc]`, `fix/[issue]`
-- Main = stable copy. Projects modify system files. Always use branches.
+- Main & development = protected branches. Projects modify system files. Always use feature branches.
 
 ## 📁 PROJECT LOCATION: `/Users/kshitiz/CascadeProjects/claude_multiagent/project`
 - ONE project at a time
