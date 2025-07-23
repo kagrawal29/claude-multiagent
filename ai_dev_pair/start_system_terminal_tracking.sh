@@ -48,7 +48,7 @@ sleep 3
 start_terminal "SYSTEM-MONITOR" "python3 orchestrator.py" "System Monitor"
 start_terminal "DEV-AGENT" "cd dev && ./dev.sh" "DEV Agent"
 start_terminal "GUIDE-AGENT" "cd guide && ./guide.sh" "GUIDE Agent" 
-start_terminal "COMM-MONITOR" "watch -n 2 'cat comm.json | jq .'" "Communication Monitor"
+start_terminal "COMM-MONITOR" "cd '$(pwd)' && watch -n 2 'cat comm.json | jq .'" "Communication Monitor"
 
 echo ""
 log "📋 Started terminals:"
