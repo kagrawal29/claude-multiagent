@@ -18,6 +18,7 @@ ENV/
 
 # Project specific
 ai_dev_pair/project/
+project/
 ai_dev_pair/comm.json
 
 # Logs
