@@ -376,6 +376,22 @@ Despite server conflicts, the app itself was **exceptional**:
 
 ---
 
+### 🔍 Proactive Monitoring Best Practices (NEW - 2025-07-23)
+- **Pattern**: GUIDE as active participant, not passive observer
+- **Implementation**:
+  - Check comm.json every 30 seconds (not 2 minutes)
+  - Read actual project files regularly
+  - Monitor git status and branch state
+  - Check system component health proactively
+  - Review code changes as they happen
+- **Key Actions**:
+  - Immediately spot uncommitted changes
+  - Notice when project folder is empty
+  - Track system process health
+  - Update playbook with real-time insights
+- **Impact**: Catches issues before they become problems
+- **Example**: Spotted launch script improvements need documentation updates
+
 ### 🚀 System Launch Simplification (NEW - 2025-07-23)
 - **Pattern**: Single `./launch` command replaces complex `start_system.sh`
 - **Implementation**:
@@ -387,11 +403,18 @@ Despite server conflicts, the app itself was **exceptional**:
   - Simpler user experience - just run `./launch`
   - More reliable terminal management
   - Cleaner codebase with fewer scripts
+  - Automatic Claude CLI launch (no manual step)
 - **Technical Details**:
   - Uses osascript for Terminal.app control
   - Tracks terminals in `.terminal_ids.txt`
   - Launches Claude CLI directly in orchestrator terminal
-- **Impact**: Reduced cognitive load for system startup
+  - Background MCP servers start before terminals
+  - 2-second delays between terminal launches for stability
+- **Code Quality**:
+  - Modular design with `system_utils.sh` for shared functions
+  - Color-coded output for better user feedback
+  - Error handling for missing Claude CLI
+- **Impact**: Reduced cognitive load for system startup, better reliability
 
 *Last updated: 2025-07-23 - Added momentum-driven development patterns and user-impact framing*
 *CRITICAL UPDATE: 2025-07-23 - Enforced MANDATORY test output requirements after DEV testing violations*
