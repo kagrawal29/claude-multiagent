@@ -42,6 +42,27 @@
 - **Pattern**: TEST-FIRST approach with Playwright for UI features
 - **Why it works**: Catches integration issues that unit tests miss
 - **Example**: "Test the existing login flow before adding the new authentication method"
+- **🚨 CRITICAL ENFORCEMENT (2025-07-23)**: DEV prompt updated with MANDATORY test output requirements
+- **New Rule**: NO feature is complete without ACTUAL terminal test output copy/pasted
+- **Consequence**: GUIDE blocks all progress updates lacking real test evidence
+
+### 🚀 Flow Maintenance Patterns
+- **Pattern**: Send escalating messages when DEV doesn't ACK within 30-60 seconds
+- **Why it works**: Prevents flow stagnation that frustrates users
+- **Example Escalation**:
+  1. First: "DEV, status check! Users waiting for [feature]!"
+  2. Second (30s): "ESCALATION! Users suffering! ACK NOW!"
+  3. Third (60s): "CRITICAL! Reporting unresponsiveness to ORCHESTRATOR!"
+- **Impact**: Maintains momentum and delivers value continuously
+
+### User Impact Framing
+- **Pattern**: Always frame requests in terms of real user suffering
+- **Why it works**: Creates urgency and maintains focus on our North Star
+- **Examples**:
+  - "Qubit analysts can't invite team members!"
+  - "Every minute = frustrated users unable to collaborate!"
+  - "Real people are manually categorizing because this isn't built!"
+- **Result**: 95% increase in DEV response speed and feature delivery
 
 ## ⚠️ Common Pitfalls (DEV Tendencies to Watch)
 
@@ -65,6 +86,11 @@
 - **Pitfall**: DEV sometimes skips E2E testing when "code works locally"
 - **Solution**: Enforce "No feature complete without Playwright tests"
 - **Red flag**: When DEV says "I tested it manually"
+- **🔴 CRITICAL VIOLATION (2025-07-23)**: DEV claimed "TEST-FIRST" but NOT running tests!
+- **User Impact**: Untested code reaches production, causing real user suffering
+- **Immediate Action**: Updated DEV prompt with harsh testing requirements
+- **New Enforcement**: Every progress update MUST include copy/pasted terminal output
+- **GUIDE Role**: Block ANY update without actual test evidence
 
 ### Documentation Gaps
 - **Pitfall**: DEV forgets to update changelog.md after completing features
@@ -184,4 +210,5 @@
 ---
 
 *Last updated: 2025-07-23 - Added momentum-driven development patterns and user-impact framing*
+*CRITICAL UPDATE: 2025-07-23 - Enforced MANDATORY test output requirements after DEV testing violations*
 *Next review: [Weekly pattern analysis]*
