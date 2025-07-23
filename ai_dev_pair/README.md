@@ -13,11 +13,15 @@ Think of this as your personal AI development team:
 
 ### Step 1: Start Your AI Team
 
-When you first open me (ORCHESTRATOR), I'll automatically start your development team. You'll see several windows open - that's your AI team getting ready to work!
+Run this single command in your terminal:
 
-Just wait for me to say "✅ All systems started!" 
+```bash
+./launch
+```
 
-### Step 2: Just Tell Me What You Want
+You'll see 5 terminal windows open - that's your AI team getting ready to work! Just wait for them to initialize, then start chatting with the ORCHESTRATOR. 
+
+### Step 3: Just Tell Me What You Want
 
 Talk to me like you would to a human developer. For example:
 
@@ -26,9 +30,9 @@ Talk to me like you would to a human developer. For example:
 - "I want a calculator that looks nice"
 - "Help me create a blog"
 
-### Step 3: Watch the Magic Happen
+### Step 4: Watch the Magic Happen
 
-You'll see 4 windows open up:
+You'll see 5 windows open up:
 
 | Window | What It Shows |
 |--------|---------------|
