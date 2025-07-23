@@ -3,34 +3,53 @@
 ## Complete File Structure
 
 ```
-/ai_dev_pair/                                    # Root system directory
-├── docs/                                        # Technical documentation
-│   ├── SYSTEM_ARCHITECTURE.md                  # Complete technical overview
-│   ├── COMMUNICATION_FLOW.md                   # Message protocols and archival
-│   ├── ROLES_AND_RESPONSIBILITIES.md           # Agent responsibilities
-│   └── CORE_PHILOSOPHY.md                      # Design principles
+/claude_multiagent/                              # Multi-agent system root
+├── ai_dev_pair/                                 # AI system directory
+│   ├── docs/                                    # Technical documentation
+│   │   ├── SYSTEM_ARCHITECTURE.md              # Complete technical overview
+│   │   ├── COMMUNICATION_FLOW.md               # Message protocols and archival
+│   │   ├── ROLES_AND_RESPONSIBILITIES.md       # Agent responsibilities
+│   │   ├── CORE_PHILOSOPHY.md                  # Design principles
+│   │   └── GIT_RULES_AND_BOUNDARIES.md         # Git workflow rules
+│   │
+│   ├── dev/                                     # DEV agent files
+│   │   ├── claude.md                           # DEV agent configuration
+│   │   ├── mcp_config.json                     # MCP server configuration
+│   │   ├── agent.py                            # DEV runtime
+│   │   └── dev.sh                              # DEV startup script
+│   │
+│   ├── guide/                                   # GUIDE agent files
+│   │   ├── claude.md                           # GUIDE agent configuration
+│   │   ├── agent.py                            # GUIDE runtime
+│   │   └── guide.sh                            # GUIDE startup script
+│   │
+│   ├── README.md                                # User-friendly instructions
+│   ├── CLAUDE.md                                # ORCHESTRATOR configuration
+│   ├── comm.json                                # Active communications (max 14 messages)
+│   ├── comm_archive.json                        # Archived communications
+│   ├── development_playbook.md                  # Working patterns (GUIDE maintains)
+│   ├── orchestrator.py                          # System health monitoring
+│   ├── send_message.py                          # Communication utility
+│   ├── start_system.sh                          # System startup
+│   └── stop_system.sh                           # System shutdown
 │
-├── dev/                                         # DEV agent files
-│   ├── claude.md                               # DEV agent configuration
-│   ├── mcp_config.json                         # MCP server configuration
-│   ├── agent.py                                # DEV runtime
-│   └── dev.sh                                  # DEV startup script
-│
-├── guide/                                       # GUIDE agent files
-│   ├── claude.md                               # GUIDE agent configuration
-│   ├── agent.py                                # GUIDE runtime
-│   └── guide.sh                                # GUIDE startup script
-│
-├── README.md                                    # User-friendly instructions
-├── claude.md                                   # ORCHESTRATOR configuration
-├── comm.json                                   # Active communications (max 14 messages)
-├── comm_archive.json                           # Archived communications
-├── development_playbook.md                     # Working patterns (GUIDE maintains)
-├── orchestrator.py                             # System health monitoring
-├── send_message.py                             # Communication utility
-├── start_system.sh                             # System startup
-└── stop_system.sh                              # System shutdown
+└── project/                                     # ACTIVE PROJECT DIRECTORY
+    └── [User's current project files]           # Only ONE project at a time
 ```
+
+## CRITICAL: Project Folder Rules
+
+### Single Active Project
+- **Location**: `/Users/kshitiz/CascadeProjects/claude_multiagent/project`
+- **Rule**: Only ONE project can exist at a time in this folder
+- **Purpose**: This is where DEV does all development work
+- **Management**: ORCHESTRATOR checks this folder before cloning new projects
+
+### Project Lifecycle
+1. **New Project**: Check if folder is empty → Clone to `project` folder
+2. **Existing Project**: Inform user that folder is occupied
+3. **Switch Projects**: User must backup/remove current project first
+4. **Clean State**: Folder should be completely empty before new clone
 
 ## File Location Rules
 
