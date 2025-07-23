@@ -34,6 +34,9 @@
 - **Pattern**: User → DEV consults GUIDE → Implementation → GUIDE review → User response
 - **Why it works**: Catches issues early and maintains quality standards
 - **Note**: DEV rarely skips this now after initial training
+- **CRITICAL REMINDER**: DEV must NEVER send messages directly to 'user'
+- **Enforcement**: Immediate correction and reminder when violations occur
+- **Success**: Protocol violations now trigger immediate self-correction by DEV
 
 ### Testing Approach
 - **Pattern**: TEST-FIRST approach with Playwright for UI features
@@ -114,6 +117,8 @@
 - **Pattern**: Branch safety → Build → Tests → Code review → Merge approval
 - **Key insight**: Auth-dependent apps can still be verified without real keys
 - **Success case**: AI Scout investor-detail-page verified despite Clerk auth blocks
+- **Verification checklist**: Git status, TypeScript compilation, test suite results, code review
+- **Pragmatic approach**: Focus on code quality over live auth when keys unavailable
 
 ### Git Workflow
 - **Success pattern**: Small, frequent commits with clear messages
@@ -141,6 +146,7 @@
 - Communication workflow violations reduced from daily to rare
 - Successful feature branch verification protocol established
 - DEV proactively handles auth-dependent testing scenarios
+- Comprehensive branch verification process catches merge readiness effectively
 
 ### Areas Still Needing Work
 - DEV sometimes forgets mobile testing
@@ -154,5 +160,5 @@
 
 ---
 
-*Last updated: [Auto-updated by GUIDE during monitoring cycles]*
+*Last updated: 2025-07-23 - Added feature branch verification insights and communication protocol enforcement*
 *Next review: [Weekly pattern analysis]*
