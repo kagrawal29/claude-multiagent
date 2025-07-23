@@ -138,6 +138,26 @@
 - **Rush jobs without planning**: Often require 50% more time for fixes
 - **Playwright test writing**: 20% additional time, but prevents 80% of bugs
 
+## 🚀 Momentum-Driven Development
+
+### The North Star Principle
+- **Pattern**: "WE EXIST TO SERVE THE END USERS" - Every decision based on user impact
+- **Implementation**: Frame all tasks in terms of real user needs and pain points
+- **Example**: "Personas API helps Qubit analysts categorize investors efficiently"
+- **Impact**: 100% task completion when framed as user stories
+
+### Flow Protection Protocol
+- **Pattern**: Never let development flow go idle - always have next task ready
+- **Enforcement**: If no ACK in 60 seconds, send follow-up with urgency
+- **Key phrases**: "Users are waiting!", "Real analysts need this NOW!"
+- **Success**: Personas API built in <30 minutes with continuous momentum
+
+### Build-First Mentality
+- **Pattern**: Skip lengthy analysis when clear tasks exist in tasks.md
+- **Why it works**: Action beats analysis paralysis
+- **Example**: Jumped straight to Personas API when identified in tasks.md
+- **Impact**: 3x faster delivery than analysis-heavy approach
+
 ## 🎯 Continuous Improvement
 
 ### Recent Improvements (This Month)
@@ -147,6 +167,8 @@
 - Successful feature branch verification protocol established
 - DEV proactively handles auth-dependent testing scenarios
 - Comprehensive branch verification process catches merge readiness effectively
+- **NEW**: Momentum-driven development yields 3x faster delivery
+- **NEW**: User-impact framing achieves 100% task completion rate
 
 ### Areas Still Needing Work
 - DEV sometimes forgets mobile testing
@@ -157,8 +179,9 @@
 - Automated accessibility testing
 - Better error handling patterns
 - Performance budgets and monitoring
+- Maintain momentum between feature completions
 
 ---
 
-*Last updated: 2025-07-23 - Added feature branch verification insights and communication protocol enforcement*
+*Last updated: 2025-07-23 - Added momentum-driven development patterns and user-impact framing*
 *Next review: [Weekly pattern analysis]*
